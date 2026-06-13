@@ -54,6 +54,18 @@
             {{ form.website.errors }}
         </div>
 
+        <div>
+            <label for="{{ form.location.id_for_label }}">Location</label><br>
+            {{ form.location }}
+            {{ form.location.errors }}
+        </div>
+
+        <div>
+            <label for="{{ form.note.id_for_label }}">Short note</label><br>
+            {{ form.note }}
+            {{ form.note.errors }}
+        </div>
+
         <p>
             <button type="submit">Generate QR code</button>
         </p>

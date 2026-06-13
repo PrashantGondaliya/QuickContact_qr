@@ -63,6 +63,25 @@ class ContactForm(forms.Form):
         })
     )
 
+    location = forms.CharField(
+        max_length=150,
+        label="Location",
+        required=False,
+        widget=forms.TextInput(attrs={
+            "placeholder": "e.g. London, United Kingdom"
+        })
+    )
+
+    note = forms.CharField(
+        max_length=250,
+        label="Short note",
+        required=False,
+        widget=forms.Textarea(attrs={
+            "placeholder": "e.g. Open to Django developer opportunities",
+            "rows": 3
+        })
+    )
+
     def clean_phone(self):
         phone = self.cleaned_data.get("phone")
 

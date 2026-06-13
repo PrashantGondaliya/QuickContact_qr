@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy - QuickContact QR{% endblock %}
+
+{% block content %}
+    <h2>Privacy-first by design</h2>
+
+    <p>
+        QuickContact QR is designed to generate contact-sharing QR codes
+        without storing submitted personal contact details in a database.
+    </p>
+
+    <h3>What happens when you create a QR code?</h3>
+
+    <ul class="contact-summary">
+        <li>You enter your contact details into the form.</li>
+        <li>The app temporarily uses those details to create a vCard.</li>
+        <li>The vCard is encoded directly into a QR code.</li>
+        <li>The generated QR code is returned to your browser.</li>
+        <li>Your submitted contact details are not saved by this app.</li>
+    </ul>
+
+    <h3>Important sharing reminder</h3>
+
+    <p>
+        The QR code itself contains your contact details. Anyone who scans
+        your QR code may be able to read or save the information inside it.
+    </p>
+
+    <div class="privacy-note">
+        Only share your generated QR code with people you want to receive
+        your contact information.
+    </div>
+
+    <p>
+        <a class="button-link" href="{% url 'contacts:create_contact' %}">
+            Create a privacy-first QR code
+        </a>
+    </p>
+{% endblock %}

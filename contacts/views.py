@@ -8,6 +8,9 @@ from .utils import build_vcard, generate_qr_code_base64
 def home(request):
     return render(request, "contacts/home.html")
 
+def privacy(request):
+    return render(request, "contacts/privacy.html")
+
 
 def create_contact(request):
     if request.method == "POST":

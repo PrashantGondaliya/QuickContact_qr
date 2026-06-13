@@ -32,6 +32,7 @@ nav a {
     color: #2563eb;
     text-decoration: none;
     font-weight: bold;
+    margin-right: 16px;
 }
 
 main {

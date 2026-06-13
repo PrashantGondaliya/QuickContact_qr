@@ -1,6 +1,6 @@
 import base64
 from io import BytesIO
-from .utils import build_vcard, escape_vcard_value, generate_qr_code_base64
+
 
 import qrcode
 

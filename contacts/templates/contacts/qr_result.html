@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Your Contact QR Code</title>
-</head>
-<body>
-    <h1>Your contact QR code</h1>
+{% extends "base.html" %}
+
+{% block title %}Your Contact QR Code{% endblock %}
+
+{% block content %}
+    <h2>Your contact QR code</h2>
 
     <p>
         This QR code stores your contact details directly inside the code.
@@ -12,19 +11,20 @@
     </p>
 
     <img
-    src="data:image/png;base64,{{ qr_code_base64 }}"
-    alt="Generated contact QR code"
->
-    <p>
-    <a
-        href="data:image/png;base64,{{ qr_code_base64 }}"
-        download="contact-qr-code.png"
+        src="data:image/png;base64,{{ qr_code_base64 }}"
+        alt="Generated contact QR code"
     >
-        Download QR code
-    </a>
+
+    <p>
+        <a
+            href="data:image/png;base64,{{ qr_code_base64 }}"
+            download="contact-qr-code.png"
+        >
+            Download QR code
+        </a>
     </p>
 
-    <h2>Contact details used</h2>
+    <h3>Contact details used</h3>
 
     <ul>
         <li><strong>Name:</strong> {{ form_data.full_name }}</li>
@@ -36,16 +36,11 @@
         <li><strong>Website:</strong> {{ form_data.website }}</li>
     </ul>
 
-    <h2>vCard data inside the QR code</h2>
+    <h3>vCard data inside the QR code</h3>
 
     <pre>{{ vcard_data }}</pre>
 
     <p>
         <a href="{% url 'contacts:create_contact' %}">Create another QR code</a>
     </p>
-
-    <p>
-        <a href="{% url 'contacts:home' %}">Back to home</a>
-    </p>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}QuickContact QR{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="{% url 'contacts:home' %}">QuickContact QR</a>
+        </h1>
+
+        <nav>
+            <a href="{% url 'contacts:create_contact' %}">Create QR</a>
+        </nav>
+
+        <hr>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>
+            Privacy-first contact QR generator. Your details are not stored by this app.
+        </p>
+    </footer>
+</body>
+</html>

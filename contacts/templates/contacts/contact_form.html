@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Contact QR</title>
-</head>
-<body>
-    <h1>Create your contact QR code</h1>
+{% extends "base.html" %}
+
+{% block title %}Create Contact QR{% endblock %}
+
+{% block content %}
+    <h2>Create your contact QR code</h2>
 
     <p>
         Your data is not stored. It will only be used to generate your QR code.
@@ -17,9 +16,4 @@
 
         <button type="submit">Generate QR code</button>
     </form>
-
-    <p>
-        <a href="{% url 'contacts:home' %}">Back to home</a>
-    </p>
-</body>
-</html>
+{% endblock %}

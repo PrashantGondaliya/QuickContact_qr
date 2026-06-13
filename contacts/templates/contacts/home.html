@@ -3,19 +3,76 @@
 {% block title %}QuickContact QR{% endblock %}
 
 {% block content %}
-    <h2>Share your contact details with one scan</h2>
+    <section class="hero">
+        <p class="eyebrow">Privacy-first contact sharing</p>
 
-    <p>
-        Create a QR code that stores your contact details directly inside the QR code.
-    </p>
+        <h2>Share your contact details with one scan</h2>
 
-    <p>
-        Your data is not saved by this app. It is only used to generate your QR code.
-    </p>
+        <p class="hero-text">
+            QuickContact QR lets you create a QR code that stores your contact
+            details directly inside the code as a vCard. No profile page, no
+            database storage, and no need for the website to stay online after
+            the QR code is generated.
+        </p>
 
-    <p>
-        <a class="button-link" href="{% url 'contacts:create_contact' %}">
-            Create my QR contact card
-        </a>
-    </p>
+        <p class="button-row">
+            <a class="button-link" href="{% url 'contacts:create_contact' %}">
+                Create my QR contact card
+            </a>
+
+            <a class="button-link secondary-button" href="{% url 'contacts:privacy' %}">
+                Learn about privacy
+            </a>
+        </p>
+    </section>
+
+    <section>
+        <h3>Why use QuickContact QR?</h3>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Privacy-first</h4>
+                <p>
+                    Submitted details are processed temporarily and are not saved
+                    in a database by this app.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h4>Works offline later</h4>
+                <p>
+                    The QR code contains the contact data itself, so it can still
+                    be scanned even if the website is unavailable.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h4>Easy contact saving</h4>
+                <p>
+                    Contact details are formatted as a vCard, which many phones
+                    and contact apps can recognize.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h4>Download options</h4>
+                <p>
+                    Download the QR code as an image or download the contact card
+                    as a .vcf file.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h3>How it works</h3>
+
+        <ol>
+            <li>Enter your contact details.</li>
+            <li>The app validates the form.</li>
+            <li>Your details are converted into a vCard.</li>
+            <li>The vCard is encoded directly into a QR code.</li>
+            <li>You download and share the QR code.</li>
+        </ol>
+    </section>
 {% endblock %}

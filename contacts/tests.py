@@ -76,6 +76,7 @@ class ContactViewTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "QuickContact QR")
+        self.assertContains(response, "Share your contact details with one scan")
 
     def test_create_contact_page_loads_successfully(self):
         response = self.client.get("/create/")

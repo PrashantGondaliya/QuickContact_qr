@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Contact QR Code</title>
+</head>
+<body>
+    <h1>Your contact QR code</h1>
+
+    <p>
+        This QR code stores your contact details directly inside the code.
+        The app has not saved your details.
+    </p>
+
+    <img
+        src="data:image/png;base64,{{ qr_code_base64 }}"
+        alt="Generated contact QR code"
+    >
+
+    <h2>Contact details used</h2>
+
+    <ul>
+        <li><strong>Name:</strong> {{ form_data.full_name }}</li>
+        <li><strong>Phone:</strong> {{ form_data.phone }}</li>
+        <li><strong>Email:</strong> {{ form_data.email }}</li>
+        <li><strong>Company:</strong> {{ form_data.company }}</li>
+        <li><strong>Job title:</strong> {{ form_data.job_title }}</li>
+        <li><strong>LinkedIn:</strong> {{ form_data.linkedin_url }}</li>
+        <li><strong>Website:</strong> {{ form_data.website }}</li>
+    </ul>
+
+    <h2>vCard data inside the QR code</h2>
+
+    <pre>{{ vcard_data }}</pre>
+
+    <p>
+        <a href="{% url 'contacts:create_contact' %}">Create another QR code</a>
+    </p>
+
+    <p>
+        <a href="{% url 'contacts:home' %}">Back to home</a>
+    </p>
+</body>
+</html>

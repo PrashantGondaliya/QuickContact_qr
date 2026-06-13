@@ -12,8 +12,50 @@
     <form method="post">
         {% csrf_token %}
 
-        {{ form.as_p }}
+        <div>
+            <label for="{{ form.full_name.id_for_label }}">Full name</label><br>
+            {{ form.full_name }}
+            {{ form.full_name.errors }}
+        </div>
 
-        <button type="submit">Generate QR code</button>
+        <div>
+            <label for="{{ form.phone.id_for_label }}">Phone number</label><br>
+            {{ form.phone }}
+            {{ form.phone.errors }}
+        </div>
+
+        <div>
+            <label for="{{ form.email.id_for_label }}">Email address</label><br>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+
+        <div>
+            <label for="{{ form.company.id_for_label }}">Company / workplace</label><br>
+            {{ form.company }}
+            {{ form.company.errors }}
+        </div>
+
+        <div>
+            <label for="{{ form.job_title.id_for_label }}">Job title</label><br>
+            {{ form.job_title }}
+            {{ form.job_title.errors }}
+        </div>
+
+        <div>
+            <label for="{{ form.linkedin_url.id_for_label }}">LinkedIn URL</label><br>
+            {{ form.linkedin_url }}
+            {{ form.linkedin_url.errors }}
+        </div>
+
+        <div>
+            <label for="{{ form.website.id_for_label }}">Website</label><br>
+            {{ form.website }}
+            {{ form.website.errors }}
+        </div>
+
+        <p>
+            <button type="submit">Generate QR code</button>
+        </p>
     </form>
 {% endblock %}

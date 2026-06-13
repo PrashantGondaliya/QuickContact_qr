@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from urllib.parse import quote
 
 from .forms import ContactForm
 from .utils import build_vcard, generate_qr_code_base64
@@ -14,6 +15,7 @@ def create_contact(request):
 
         if form.is_valid():
             vcard_data = build_vcard(form.cleaned_data)
+            vcard_data_url = quote(vcard_data)
             qr_code_base64 = generate_qr_code_base64(vcard_data)
 
             return render(request, "contacts/qr_result.html", {

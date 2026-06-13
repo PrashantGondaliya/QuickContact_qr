@@ -69,3 +69,51 @@ class VcardUtilityTests(TestCase):
         self.assertIn("TEL;TYPE=CELL:+44 7123 456789", vcard)
         self.assertIn("EMAIL;TYPE=INTERNET:prashant@example.com", vcard)
         self.assertIn("END:VCARD", vcard)
+
+class ContactViewTests(TestCase):
+    def test_homepage_loads_successfully(self):
+        response = self.client.get("/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "QuickContact QR")
+
+    def test_create_contact_page_loads_successfully(self):
+        response = self.client.get("/create/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Create your contact QR code")
+
+    def test_privacy_page_loads_successfully(self):
+        response = self.client.get("/privacy/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Privacy-first by design")
+
+    def test_valid_contact_form_submission_returns_qr_result(self):
+        response = self.client.post("/create/", data={
+            "full_name": "Prashant Gondaliya",
+            "phone": "+44 7123 456789",
+            "email": "prashant@example.com",
+            "company": "QuickContact QR",
+            "job_title": "Django Developer",
+            "linkedin_url": "https://www.linkedin.com/in/prashant",
+            "website": "https://example.com",
+            "location": "London",
+            "note": "Open to Django roles",
+        })
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Your contact QR code is ready")
+        self.assertContains(response, "Download QR code")
+        self.assertContains(response, "Download contact card")
+
+    def test_invalid_contact_form_submission_shows_errors(self):
+        response = self.client.post("/create/", data={
+            "full_name": "Prashant Gondaliya",
+            "email": "not-an-email",
+            "phone": "hello123",
+        })
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Enter a valid email address")
+        self.assertContains(response, "Phone number can only contain")

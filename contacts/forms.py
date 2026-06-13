@@ -82,6 +82,27 @@ class ContactForm(forms.Form):
         })
     )
 
+    qr_size = forms.ChoiceField(
+        label="QR code size",
+        choices=[
+            ("small", "Small"),
+            ("medium", "Medium"),
+            ("large", "Large"),
+        ],
+        initial="medium",
+        required=True
+    )
+
+    error_correction = forms.ChoiceField(
+        label="QR reliability",
+        choices=[
+            ("standard", "Standard"),
+            ("high", "High - better if printed"),
+        ],
+        initial="standard",
+        required=True
+    )
+
     def clean_phone(self):
         phone = self.cleaned_data.get("phone")
 

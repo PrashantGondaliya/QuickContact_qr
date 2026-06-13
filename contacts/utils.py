@@ -1,5 +1,6 @@
 import base64
 from io import BytesIO
+from .utils import build_vcard, escape_vcard_value, generate_qr_code_base64
 
 import qrcode
 
@@ -64,11 +65,28 @@ def build_vcard(data):
     return "\r\n".join(vcard_lines)
 
 
-def generate_qr_code_base64(data):
+def generate_qr_code_base64(data, qr_size="medium", error_correction="standard"):
+    box_size_map = {
+        "small": 6,
+        "medium": 10,
+        "large": 14,
+    }
+
+    error_correction_map = {
+        "standard": qrcode.constants.ERROR_CORRECT_M,
+        "high": qrcode.constants.ERROR_CORRECT_H,
+    }
+
+    box_size = box_size_map.get(qr_size, 10)
+    error_correction_level = error_correction_map.get(
+        error_correction,
+        qrcode.constants.ERROR_CORRECT_M
+    )
+
     qr = qrcode.QRCode(
         version=None,
-        error_correction=qrcode.constants.ERROR_CORRECT_M,
-        box_size=10,
+        error_correction=error_correction_level,
+        box_size=box_size,
         border=4,
     )
 

@@ -54,6 +54,13 @@
         <li><strong>Note:</strong> {{ form_data.note }}</li>
     </ul>
 
+    <h3>QR settings used</h3>
+
+    <ul class="contact-summary">
+        <li><strong>Size:</strong> {{ form_data.qr_size }}</li>
+        <li><strong>Reliability:</strong> {{ form_data.error_correction }}</li>
+    </ul>
+
     <details>
         <summary>View technical vCard data inside the QR code</summary>
         <pre>{{ vcard_data }}</pre>

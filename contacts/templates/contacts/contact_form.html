@@ -66,6 +66,20 @@
             {{ form.note.errors }}
         </div>
 
+                <h3>QR code options</h3>
+
+        <div>
+            <label for="{{ form.qr_size.id_for_label }}">QR code size</label><br>
+            {{ form.qr_size }}
+            {{ form.qr_size.errors }}
+        </div>
+
+        <div>
+            <label for="{{ form.error_correction.id_for_label }}">QR reliability</label><br>
+            {{ form.error_correction }}
+            {{ form.error_correction.errors }}
+        </div>
+
         <p>
             <button type="submit">Generate QR code</button>
         </p>

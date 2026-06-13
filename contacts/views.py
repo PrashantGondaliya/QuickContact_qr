@@ -19,7 +19,11 @@ def create_contact(request):
         if form.is_valid():
             vcard_data = build_vcard(form.cleaned_data)
             vcard_data_url = quote(vcard_data)
-            qr_code_base64 = generate_qr_code_base64(vcard_data)
+            qr_code_base64 = generate_qr_code_base64(
+                vcard_data,
+                qr_size=form.cleaned_data.get("qr_size", "medium"),
+                error_correction=form.cleaned_data.get("error_correction", "standard"),
+            )
 
             return render(request, "contacts/qr_result.html", {
                 "form_data": form.cleaned_data,

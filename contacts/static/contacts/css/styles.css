@@ -124,3 +124,41 @@ pre {
     color: #dc2626;
     margin-top: 6px;
 }
+
+.privacy-note {
+    margin: 20px 0;
+    padding: 14px 16px;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-radius: 12px;
+    color: #065f46;
+}
+
+.button-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.secondary-button {
+    background: #374151;
+}
+
+.secondary-button:hover {
+    background: #1f2937;
+}
+
+.contact-summary {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+details {
+    margin-top: 24px;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #2563eb;
+}

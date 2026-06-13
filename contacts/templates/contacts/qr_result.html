@@ -3,12 +3,18 @@
 {% block title %}Your Contact QR Code{% endblock %}
 
 {% block content %}
-    <h2>Your contact QR code</h2>
+    <h2>Your contact QR code is ready</h2>
 
     <p>
-        This QR code stores your contact details directly inside the code.
-        The app has not saved your details.
+        This QR code stores your contact details directly inside the QR code.
+        The app has not saved your details in a database.
     </p>
+
+    <div class="privacy-note">
+        <strong>Privacy reminder:</strong>
+        Anyone who scans this QR code can read the contact details inside it.
+        Only share it with people you want to receive your contact information.
+    </div>
 
     <img
         class="qr-image"
@@ -16,7 +22,7 @@
         alt="Generated contact QR code"
     >
 
-    <p>
+    <p class="button-row">
         <a
             class="button-link"
             href="data:image/png;base64,{{ qr_code_base64 }}"
@@ -26,7 +32,7 @@
         </a>
 
         <a
-            class="button-link"
+            class="button-link secondary-button"
             href="data:text/vcard;charset=utf-8,{{ vcard_data_url }}"
             download="contact-card.vcf"
         >
@@ -36,7 +42,7 @@
 
     <h3>Contact details used</h3>
 
-    <ul>
+    <ul class="contact-summary">
         <li><strong>Name:</strong> {{ form_data.full_name }}</li>
         <li><strong>Phone:</strong> {{ form_data.phone }}</li>
         <li><strong>Email:</strong> {{ form_data.email }}</li>
@@ -48,9 +54,10 @@
         <li><strong>Note:</strong> {{ form_data.note }}</li>
     </ul>
 
-    <h3>vCard data inside the QR code</h3>
-
-    <pre>{{ vcard_data }}</pre>
+    <details>
+        <summary>View technical vCard data inside the QR code</summary>
+        <pre>{{ vcard_data }}</pre>
+    </details>
 
     <p>
         <a href="{% url 'contacts:create_contact' %}">Create another QR code</a>

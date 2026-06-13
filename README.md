@@ -1,33 +1,49 @@
 # QuickContact QR
 
-QuickContact QR is a privacy-first Django web app that lets users generate a QR code containing their contact details.
+QuickContact QR is a privacy-first Django web app that lets users generate QR codes containing their contact details.
 
-The QR code stores the contact data directly as a vCard, so the app does not need to save personal information in a database.
+The QR code stores the contact data directly as a vCard, so the generated QR code can work without relying on the website being online later.
 
 ## Features
 
 - Contact form for name, phone, email, company, job title, LinkedIn, website, location, and note
-- Form validation for email, URLs, phone number, and LinkedIn URL
+- Email, URL, phone number, and LinkedIn URL validation
 - vCard generation
-- QR code generation
+- QR code generation from vCard data
+- QR code size options
+- QR reliability options for standard or high error correction
 - Downloadable QR code image
+- Downloadable `.vcf` contact card
+- Privacy information page
 - No database storage of submitted personal contact details
-- Simple responsive styling with Django static files
+- Simple styling with Django static files
+- Automated tests for forms, utilities, and views
 
 ## Privacy-first approach
 
-This app does not intentionally store submitted contact details.
+QuickContact QR is designed to avoid storing submitted personal contact details in a database.
 
-The submitted information is used temporarily to generate a vCard QR code and is returned to the user in the browser.
+When a user submits the form, the app temporarily processes the details to generate a vCard and QR code, then returns the result to the browser.
 
-Anyone who scans the QR code can read the contact details inside it, so users should only share QR codes with people they want to share their contact information with.
+The generated QR code itself contains the contact details. Anyone who scans the QR code may be able to read or save the information inside it, so users should only share QR codes with people they want to receive their contact information.
+
+## How it works
+
+```text
+User fills in contact form
+        ↓
+Django validates the form
+        ↓
+App builds a vCard in memory
+        ↓
+App generates a QR code from the vCard
+        ↓
+User downloads or shares the QR code
+```
+No submitted contact details are intentionally saved to a database or file.
 
 ## Tech stack
 
 - Python
 - Django
-- HTML
-- CSS
-- qrcode
-- Pillow
-
+- qrcode and Pillow libraries
